@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Collection Event | Samsung E-Waste</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/collections.css" />
+</head>
+
+<body>
+
+    <header>
+        Samsung E-Waste Management – Collection Event
+    </header>
+
+    <div class="container">
+        <h2>Log Collection Event</h2>
+
+        <form id="collectionForm">
+
+            <div>
+                <label>Collection Point</label>
+                <select required>
+                    <option value="" disabled selected>Select Collection Point</option>
+                    <option value="1">Mumbai Center</option>
+                    <option value="2">Pune Center</option>
+                    <option value="3">Nagpur Center</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Event Date</label>
+                <input type="date" required />
+            </div>
+
+            <div>
+                <label>Collected By</label>
+                <input type="text" placeholder="Staff / Vendor Name" required />
+            </div>
+
+            <div>
+                <label>Number of Devices Collected</label>
+                <input type="number" min="1" placeholder="Device Count" required />
+            </div>
+
+            <div class="full-width">
+                <label>Notes</label>
+                <textarea rows="3" placeholder="Any additional remarks"></textarea>
+            </div>
+
+            <div class="full-width">
+                <button type="submit">Save Collection Event</button>
+            </div>
+
+        </form>
+
+        <!-- <div class="status">
+            <span class="badge collected">Collected</span>
+        </div> -->
+    </div>
+
+    <script src="../js/collection.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Refurbishment Request | Samsung E-Waste</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/registerEwaste.css" />
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="../assets/logo.png" alt="">
+        </div>
+        <nav>
+            <a href="../Pages/Home.html">Home</a>
+            <a href="../Pages/registerEwaste.html">Register Device</a>
+            <a href="#">Track Request</a>
+            <a href="#">Collection Points</a>
+            <a href="#">Admin Login</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Device Refurbishment Request Form</h2>
+
+        <form id="requestForm">
+
+            <div>
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your name" required />
+            </div>
+
+            <div>
+                <label>Phone Number</label>
+                <input type="text" placeholder="Enter phone number" required />
+            </div>
+
+            <div>
+                <label>Email Address</label>
+                <input type="email" placeholder="Enter email" required />
+            </div>
+
+            <div>
+                <label>Device Type</label>
+                <input type="text" placeholder="Mobile, Laptop, TV etc." required />
+            </div>
+
+            <div>
+                <label>Brand</label>
+                <input type="text" value="Samsung" readonly />
+            </div>
+
+            <div>
+                <label>Device Condition</label>
+                <select required>
+                    <option value="" disabled selected>Select Condition</option>
+                    <option>Working</option>
+                    <option>Partially Working</option>
+                    <option>Not Working</option>
+                </select>
+            </div>
+
+            <!-- Collection Method -->
+            <div class="full-width">
+                <label>Collection Method</label>
+                <select id="collectionMethod" required onchange="toggleCollection()">
+                    <option value="" disabled selected>Select Method</option>
+                    <option value="pickup">Home Pickup</option>
+                    <option value="center">Drop at Nearby Center</option>
+                </select>
+            </div>
+
+            <!-- Pickup Address -->
+            <div class="full-width" id="pickupAddress" style="display:none;">
+                <label>Pickup Address</label>
+                <textarea rows="3" placeholder="Enter full pickup address"></textarea>
+            </div>
+
+            <!-- Nearby Center -->
+            <div class="full-width" id="centerSelect" style="display:none;">
+                <label>Select Nearby Samsung E-Waste Center</label>
+                <select>
+                    <option disabled selected>Select Center</option>
+                    <option>Samsung Service Center – Andheri</option>
+                    <option>Samsung E-Waste Hub – Bandra</option>
+                    <option>Samsung Authorized Center – Navi Mumbai</option>
+                </select>
+            </div>
+
+            <div class="full-width">
+                <label>Additional Notes</label>
+                <textarea rows="3" placeholder="Any issues or comments"></textarea>
+            </div>
+
+            <div class="full-width">
+                <button type="submit">Submit Request</button>
+            </div>
+
+            <!-- Success Popup -->
+            <div id="successPopup" class="popup-overlay">
+                <div class="popup-box">
+                    <h2>✅ Request Submitted</h2>
+                    <p>Your refurbishment request has been sent successfully.</p>
+                    <button type="button" onclick="closePopup()">OK</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    <footer>
+        <div>
+            <img src="../assets/logo.png" alt="logo">
+            <p>Official platform for responsible electronic waste management.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <p><a href="#">Register Device</a></p>
+            <p><a href="#">Track Status</a></p>
+            <p><a href="#">Admin Panel</a></p>
+        </div>
+        <div>
+            <h4>Support</h4>
+            <p>Email: ewaste@samsung.com</p>
+            <p>Helpline: 1800‑XXX‑XXXX</p>
+        </div>
+    </footer>
+    <script src="../js/userRegisterDevice.js"></script>
+</body>
+
+</html>
