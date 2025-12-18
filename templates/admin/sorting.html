@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <title>Device Sorting | Samsung E-Waste</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/sorting.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}" />
+    <link rel="stylesheet" href="../../static/css/sidebar.css" />
+    <link rel="stylesheet" href="../../static/css/sorting.css" />
 
 </head>
 
@@ -15,15 +15,17 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="logo">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo">
+            <img src="../../static/images/logo.png" alt="logo">
         </div>
         <div class="links">
             <a href="#">Dashboard</a>
-            <a href="#registration">Register Device</a>
-            <a href="#sorting">Sorting & Inspection</a>
-            <a href="#refurbishable">Refurbishable</a>
-            <a href="#recyclable">Recyclable</a>
-            <a href="#rejected">Rejected</a>
+            <a href="#">Collection Points</a>
+            <a href="#">Collection Events</a>
+            <a href="#">Register Device</a>
+            <a href="#">Sorting & Inspection</a>
+            <a href="#">Refurbishable</a>
+            <a href="#">Recyclable</a>
+            <a href="#">Rejected</a>
         </div>
     </div>
 
@@ -68,57 +70,57 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h3>Sorting & Inspection Form</h3>
-                    <form id="modalSortingForm" method="POST" action="{{ url_for('sorting.sort_device') }}"
-                        class="modal-form">
+                    <form id="modalSortingForm" method="POST" action="" class="modal-form">
 
+                        <!-- CSRF -->
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                        <!-- Device ID (FK) -->
                         <input type="hidden" name="device_id" id="modalDeviceID">
 
+                        <!-- Sorting Date -->
+                        <div>
+                            <label>Sorting Date</label>
+                            <input type="date" name="sorting_date" required>
+                        </div>
+
+                        <!-- Serial Number (display only, not stored here) -->
                         <div>
                             <label>Serial Number</label>
-                            <input type="text" name="serial_number" id="modalSerialNumber" readonly>
+                            <input type="text" id="modalSerialNumber" readonly>
                         </div>
 
+                        <!-- Sorted By -->
                         <div>
-                            <label>Physical Condition</label>
-                            <select name="physical_condition" required>
-                                <option value="" disabled selected>Select Condition</option>
-                                <option>Good</option>
-                                <option>Fair</option>
-                                <option>Damaged</option>
-                            </select>
+                            <label>Sorted By </label>
+                            <input type="text" name="sorted_by" placeholder="Enter Staff Name" required>
                         </div>
 
+                        <!-- Category -->
                         <div>
-                            <label>Functional Status</label>
-                            <select name="functional_status" required>
-                                <option value="" disabled selected>Select Status</option>
-                                <option>Working</option>
-                                <option>Partially Working</option>
-                                <option>Not Working</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label>Sorting Decision</label>
+                            <label>Sorting Category</label>
                             <select name="category" required>
-                                <option value="" disabled selected>Select Decision</option>
-                                <option value="Refurbishable">Refurbishable</option>
-                                <option value="Recyclable">Recyclable</option>
-                                <option value="Rejected">Rejected</option>
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="Reusable">Reusable</option>
+                                <option value="Refurbish">Refurbish</option>
+                                <option value="Dismantle">Dismantle</option>
+                                <option value="Dispose">Dispose</option>
                             </select>
                         </div>
 
+                        <!-- Remarks -->
                         <div>
                             <label>Remarks</label>
-                            <textarea name="remarks" rows="3" placeholder="Describe issues or remarks"></textarea>
+                            <textarea name="remarks" rows="3" placeholder="Inspection notes or issues"></textarea>
                         </div>
 
-                        <!-- Submit button at the bottom -->
+                        <!-- Button -->
                         <div class="full-width">
                             <button type="submit">Save Sorting</button>
                         </div>
+
                     </form>
+
                 </div>
             </div>
 

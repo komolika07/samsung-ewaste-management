@@ -6,7 +6,8 @@
     <title>Admin Login | Samsung E-Waste</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Use url_for for static assets -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"> -->
+     <link rel="stylesheet" href="../../static/css/login.css">
 </head>
 
 <body>
@@ -37,7 +38,7 @@
 
             <!-- Flask form submission -->
             <form method="POST" action="{{ url_for('admin.login') }}">
-                {{ csrf_token() }}
+               
                 <div>
                     <input type="text" name="username" id="username" placeholder="Enter Username" required>
                 </div>

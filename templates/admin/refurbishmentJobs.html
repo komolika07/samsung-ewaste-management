@@ -5,102 +5,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Refurbishment Jobs</title>
-    <link rel="stylesheet" href="../static/css/refurbishmentJobs.css">
+
+    <link rel="stylesheet" href="../../static/css/sidebar.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+        }
+
+        /* Main content beside sidebar */
+        .main {
+            /* margin-left: 220px; sidebar width */
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        /* Form container */
+        .form-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+        }
+
+        /* Flexbox form */
+        form {
+            display: flex;
+            flex-direction: column;
+            min-height: 500px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        /* Button at bottom */
+        .btn-submit {
+            margin-top: auto;
+            align-self: flex-end;
+            background: #27ae60;
+            color: white;
+            padding: 12px 22px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
 
-    <header>
-        Samsung E-Waste Management - Refurbishment Jobs
-    </header>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="../../static/images/logo.png" alt="logo">
+        </div>
+        <div class="links">
+            <a href="#">Dashboard</a>
+            <a href="#">Collection Points</a>
+            <a href="#">Collection Events</a>
+            <a href="#">Register Device</a>
+            <a href="#">Sorting & Inspection</a>
+            <a href="#">Refurbishable</a>
+            <a href="#">Recyclable</a>
+            <a href="#">Rejected</a>
+        </div>
+    </div>
 
-    <div class="container">
+    <!-- Main Content -->
+    <div class="main">
+
         <h2>Refurbishment Job Form</h2>
-        <form id="refurbJobForm">
-           
-            <div>
-                <label for="deviceId">Device ID</label>
-                <input type="number" id="deviceId" name="deviceId" placeholder="Enter Device ID" required>
-            </div>
 
-            <div>
-                <label for="startDate">Start Date</label>
-                <input type="date" id="startDate" name="startDate" required>
-            </div>
+        <div class="form-container">
+            <form id="refurbJobForm">
 
-            <div>
-                <label for="endDate">End Date</label>
-                <input type="date" id="endDate" name="endDate">
-            </div>
+                <div class="form-group">
+                    <label>Device ID</label>
+                    <input type="number" name="deviceId" placeholder="Enter Device ID" required>
+                </div>
 
-            <div>
-                <label for="technicianId">Technician ID</label>
-                <input type="text" id="technicianId" name="technicianId" required>
-            </div>
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <input type="date" name="startDate" required>
+                </div>
 
-            <div>
-                <label for="jobStatus">Job Status</label>
-                <select id="jobStatus" name="jobStatus" required>
-                    <option value="">Select Status</option>
-                    <option value="Pending">Pending</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label>End Date</label>
+                    <input type="date" name="endDate">
+                </div>
 
-            <div class="full-width">
-                <label for="notes">Notes</label>
-                <textarea id="notes" name="notes" rows="4"></textarea>
-            </div>
+                <div class="form-group">
+                    <label>Technician ID</label>
+                    <input type="text" name="technicianId" required>
+                </div>
 
-            <div class="full-width">
-                <button type="submit">Submit Job</button>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label>Job Status</label>
+                    <select name="jobStatus" required>
+                        <option value="">Select Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea name="notes" rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    Submit Job
+                </button>
+
+            </form>
+        </div>
 
     </div>
 
-    <script>
-        // // Simple JS to handle form submission (adds row to table)
-        // const form = document.getElementById('refurbJobForm');
-        // const tableBody = document.querySelector('table tbody');
-
-        // form.addEventListener('submit', function (e) {
-        //     e.preventDefault();
-
-        //     const jobId = document.getElementById('jobId').value;
-        //     const deviceId = document.getElementById('deviceId').value;
-        //     const startDate = document.getElementById('startDate').value;
-        //     const endDate = document.getElementById('endDate').value;
-        //     const technicianId = document.getElementById('technicianId').value;
-        //     const jobStatus = document.getElementById('jobStatus').value;
-        //     const notes = document.getElementById('notes').value;
-
-        //     // Determine badge class
-        //     let badgeClass = '';
-        //     if (jobStatus === 'Pending') badgeClass = 'pending';
-        //     else if (jobStatus === 'In Progress') badgeClass = 'in-progress';
-        //     else if (jobStatus === 'Completed') badgeClass = 'completed';
-
-        //     // Add new row to table
-        //     const newRow = `
-        //     <tr>
-        //         <td>${jobId}</td>
-        //         <td>${deviceId}</td>
-        //         <td>${startDate}</td>
-        //         <td>${endDate}</td>
-        //         <td>${technicianId}</td>
-        //         <td><span class="badge ${badgeClass}">${jobStatus}</span></td>
-        //         <td>${notes}</td>
-        //     </tr>
-        // `;
-        //     tableBody.insertAdjacentHTML('beforeend', newRow);
-
-        //     // Reset form
-        //     form.reset();
-        // });
-    </script>
-
 </body>
-
 </html>

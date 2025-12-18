@@ -1,68 +1,122 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <title>Collection Event | Samsung E-Waste</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/collections.css" />
+
+    <link rel="stylesheet" href="../../static/css/sidebar.css">
+    <link rel="stylesheet" href="../../static/css/collections.css">
+
+    <style>
+       
+    </style>
 </head>
 
 <body>
 
-    <header>
-        Samsung E-Waste Management – Collection Event
-    </header>
-
-    <div class="container">
-        <h2>Log Collection Event</h2>
-
-        <form id="collectionForm">
-
-            <div>
-                <label>Collection Point</label>
-                <select required>
-                    <option value="" disabled selected>Select Collection Point</option>
-                    <option value="1">Mumbai Center</option>
-                    <option value="2">Pune Center</option>
-                    <option value="3">Nagpur Center</option>
-                </select>
-            </div>
-
-            <div>
-                <label>Event Date</label>
-                <input type="date" required />
-            </div>
-
-            <div>
-                <label>Collected By</label>
-                <input type="text" placeholder="Staff / Vendor Name" required />
-            </div>
-
-            <div>
-                <label>Number of Devices Collected</label>
-                <input type="number" min="1" placeholder="Device Count" required />
-            </div>
-
-            <div class="full-width">
-                <label>Notes</label>
-                <textarea rows="3" placeholder="Any additional remarks"></textarea>
-            </div>
-
-            <div class="full-width">
-                <button type="submit">Save Collection Event</button>
-            </div>
-
-        </form>
-
-        <!-- <div class="status">
-            <span class="badge collected">Collected</span>
-        </div> -->
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="../../static/images/logo.png" alt="logo">
+        </div>
+        <div class="links">
+            <a href="#">Dashboard</a>
+            <a href="#">Collection Points</a>
+            <a href="#">Collection Events</a>
+            <a href="#">Register Device</a>
+            <a href="#">Sorting & Inspection</a>
+            <a href="#">Refurbishable</a>
+            <a href="#">Recyclable</a>
+            <a href="#">Rejected</a>
+        </div>
     </div>
 
-    <script src="../js/collection.js"></script>
+    <!-- Main Content -->
+    <div class="main">
+
+        <!-- FORM -->
+        <h2>Log Collection Event</h2>
+        <div class="form-container">
+            <form method="POST" action="collection_event_add.php">
+
+                <div class="form-group">
+                    <label>Collection Point</label>
+                    <select name="collection_point_id" required>
+                        <option value="" disabled selected>Select Collection Point</option>
+                        <option value="1">Mumbai Center</option>
+                        <option value="2">Pune Center</option>
+                        <option value="3">Nagpur Center</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Event Date</label>
+                    <input type="date" name="event_date" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Collected By</label>
+                    <input type="text" name="collected_by" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Number of Devices Collected</label>
+                    <input type="number" name="device_count" min="1" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea name="notes" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn-save">
+                    Save Collection Event
+                </button>
+            </form>
+        </div>
+
+        <!-- TABLE -->
+        <h2 style="margin-top:30px;">Collection Events</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Collection Point</th>
+                        <th>Date</th>
+                        <th>Collected By</th>
+                        <th>Devices</th>
+                        <th>Notes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- PHP LOOP HERE -->
+                    <tr>
+                        <td>1</td>
+                        <td>Mumbai Center</td>
+                        <td>2025-03-10</td>
+                        <td>ABC Vendor</td>
+                        <td>45</td>
+                        <td>Monthly drive</td>
+                        <td>
+                            <a href="collection_event_edit.php?id=1">
+                                <button class="btn-edit">Edit</button>
+                            </a>
+                            <a href="collection_event_delete.php?id=1"
+                               onclick="return confirm('Are you sure?')">
+                                <button class="btn-delete">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <!-- END LOOP -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 
 </body>
-
 </html>
